@@ -16,6 +16,15 @@ class Post:
         self.title = md.Meta['title'][0]
         self.summary = md.Meta['summary'][0]
         self.date = dateparser.parse(md.Meta['date'][0])
+
+class Paper:
+    def __init__(self, id, text):
+        md = markdown.Markdown(extensions=['meta'])
+        md.convert(text)
+        self.id = id
+        self.title = md.Meta['title'][0]
+        self.date = dateparser.parse(md.Meta['date'][0])
+        self.authors = md.Meta['authors']
         
 
 
@@ -26,12 +35,59 @@ def load_posts():
             input = open(os.path.join(root, name, "index.md"), "r")
             p_list.append(Post(name, input.read()))
         break
-    p_list.sort(key=lambda p: p.date)
+    p_list.sort(key=lambda p: p.date, reverse=True)
     return p_list
+
+def load_papers():
+    p_list = []
+    for root, dirs, files in os.walk("papers"):
+        for name in dirs:
+            input = open(os.path.join(root, name, "index.md"), "r")
+            p_list.append(Paper(name, input.read()))
+        break
+    p_list.sort(key=lambda p: p.date, reverse=True)
+    return p_list
+
+
+def make_short_posts(p_list):
+    tag_list = []
+    for post in p_list:
+        tag_list.append(builder.DIV(
+            builder.H1(
+                builder.A(post.title, href="posts/" + post.id + ".html"),
+                builder.CLASS("post-title")
+            ),
+            builder.P(post.summary),
+            builder.DIV(post.date.strftime("%d %b %Y, %H:%M"), builder.CLASS("post-date")),
+            builder.CLASS("post-container")))
+    return tag_list
+
+def make_short_papers(p_list):
+    tag_list = []
+    for paper in p_list:
+        
+        authors = paper.authors[0]
+        for a in paper.authors[1:-1]:
+            authors += ", " + a
+        if len(paper.authors) > 1:
+            authors += " and " + paper.authors[-1]
+
+        tag_list.append(builder.DIV(
+            builder.H1(
+                paper.title,
+                builder.CLASS("paper-title")
+            ),
+            builder.DIV(html.fromstring(authors), builder.CLASS("paper-authors")),
+            builder.DIV(paper.date.strftime("%d %b %Y, %H:%M"), builder.CLASS("paper-date")),
+            builder.CLASS("paper-container")))
+    return tag_list
+
+
+
 
 def make_head():
     head = [
-        builder.BASE(href="http://localhost/my_site/docs/"),
+        builder.BASE(href="http://localhost/my_site/docs/"), # ONLY FOR DEBUG!!!
         builder.META(charset="utf-8"),
         builder.TITLE("Author Name"),
         builder.META(name="viewport", content = "width=device-width, initial-scale=1"),
@@ -55,38 +111,39 @@ def make_menu():
     menu = builder.UL(
         builder.LI(builder.A(builder.I("", builder.CLASS("fas fa-bars")), href=""), builder.CLASS("menu-button")),
         builder.LI(builder.A(builder.B("Author Name"), href="index.html"), builder.CLASS("menu-title")),
-        builder.LI(builder.A(builder.B("Home"), href="index.html#home.page-section"), builder.CLASS("menu-item")),
-        builder.LI(builder.A(builder.B("Posts"), href="index.html#posts.page-section"), builder.CLASS("menu-item")),
-        builder.LI(builder.A(builder.B("Papers"), href="index.html#papers.page-section"), builder.CLASS("menu-item")),
-        builder.LI(builder.A(builder.B("Contact"), href="index.html#contact.page-section"), builder.CLASS("menu-item")),
+        #builder.LI(builder.A(builder.B("Home"), href="index.html"), builder.CLASS("menu-item")),
+        builder.LI(builder.A(builder.B("Posts"), href="posts.html"), builder.CLASS("menu-item")),
+        builder.LI(builder.A(builder.B("Papers"), href="papers.html"), builder.CLASS("menu-item")),
+        builder.LI(builder.A(builder.B("Contact"), href="contact.html"), builder.CLASS("menu-item")),
         builder.CLASS("menu")
     )
     return menu
 
-def make_short_posts(p_list):
-    tag_list = []
-    for post in p_list:
-        tag_list.append(builder.DIV(
-            builder.H1(
-                builder.A(post.title, href="posts/" + post.id + ".html"),
-                builder.CLASS("post-title")
-            ),
-            builder.P(post.summary),
-            builder.DIV(post.date.strftime("%d %b %Y, %H:%M"), builder.CLASS("post-date")),
-            builder.CLASS("post-container")))
-    return tag_list
+
 
 
 
 def gen_index(p_list):
     index = builder.HTML(
         builder.HEAD(*make_head()),
-        builder.BODY(make_menu(), builder.DIV(*make_short_posts(p_list)))
+        builder.BODY(make_menu())
     )
 
     print(html.etree.tostring(index, pretty_print=True).decode("utf-8"), file=open("docs/index.html", "w"))
 
 def gen_posts(p_list):
+    index = builder.HTML(
+        builder.HEAD(*make_head()),
+        builder.BODY(
+            make_menu(),
+            builder.DIV(
+                builder.H1("Posts"),
+                *make_short_posts(p_list)
+            )
+        )
+    )
+    print(html.etree.tostring(index, pretty_print=True).decode("utf-8"), file=open("docs/posts.html", "w"))
+
     for post in p_list:
         html_content = builder.DIV(
             builder.H1(post.title),
@@ -99,6 +156,26 @@ def gen_posts(p_list):
             builder.BODY(make_menu(), html_content)
         )
         print(html.etree.tostring(page, pretty_print=True).decode("utf-8"), file=open("docs/posts/" + post.id + ".html", "w"))
+    
+def gen_papers(p_list):
+    index = builder.HTML(
+        builder.HEAD(*make_head()),
+        builder.BODY(
+            make_menu(),
+            builder.DIV(
+                builder.H1("Papers"),
+                *make_short_papers(p_list)
+            )
+        )
+    )
+    print(html.etree.tostring(index, pretty_print=True).decode("utf-8"), file=open("docs/papers.html", "w"))
+
+def gen_contact():
+    index = builder.HTML(
+        builder.HEAD(*make_head()),
+        builder.BODY(make_menu(), builder.H1("contact: TODO"))
+    )
+    print(html.etree.tostring(index, pretty_print=True).decode("utf-8"), file=open("docs/contact.html", "w"))
 
 
 if os.path.exists("docs"):
@@ -109,9 +186,12 @@ os.mkdir("docs/posts")
 
 
 post_list = load_posts()
+paper_list = load_papers()
 
 gen_index(post_list)
 gen_posts(post_list)
+gen_papers(paper_list)
+gen_contact()
 
 
 
