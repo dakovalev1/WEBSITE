@@ -116,6 +116,8 @@ def make_head():
         builder.LINK(rel="stylesheet",href=base_url + "css/common/common.css"),
 
         builder.SCRIPT("", src=base_url + "js/menu.js"),
+        builder.SCRIPT("", src=base_url + "js/scroll.js"),
+        
     ]
 
     return head

@@ -5,25 +5,23 @@ date: 04 April 2019
 
 # Markdown: Syntax
 
-*   [Overview](#overview)
-    *   [Philosophy](#philosophy)
-    *   [Inline HTML]()
-    *   [Automatic Escaping for Special Characters]()
-*   [Block Elements](#block)
-    *   [Paragraphs and Line Breaks](#p)
-    *   [Headers](#header)
-    *   [Blockquotes](#blockquote)
-    *   [Lists](#list)
-    *   [Code Blocks](#precode)
-    *   [Horizontal Rules](#hr)
-*   [Span Elements](#span)
-    *   [Links](#link)
-    *   [Emphasis](#em)
-    *   [Code](#code)
-    *   [Images](#img)
-*   [Miscellaneous](#misc)
-    *   [Backslash Escapes](#backslash)
-    *   [Automatic Links](#autolink)
+*   [Overview](#overview){class=hashtag}
+    *   [Philosophy](#philosophy){class=hashtag}
+*   [Block Elements](#block){class=hashtag}
+    *   [Paragraphs and Line Breaks](#p){class=hashtag}
+    *   [Headers](#header){class=hashtag}
+    *   [Blockquotes](#blockquote){class=hashtag}
+    *   [Lists](#list){class=hashtag}
+    *   [Code Blocks](#precode){class=hashtag}
+    *   [Horizontal Rules](#hr){class=hashtag}
+*   [Span Elements](#span){class=hashtag}
+    *   [Links](#link){class=hashtag}
+    *   [Emphasis](#em){class=hashtag}
+    *   [Code](#code){class=hashtag}
+    *   [Images](#img){class=hashtag}
+*   [Miscellaneous](#misc){class=hashtag}
+    *   [Backslash Escapes](#backslash){class=hashtag}
+    *   [Automatic Links](#autolink){class=hashtag}
 
 
 **Note:** This document is itself written using Markdown; you
@@ -31,7 +29,7 @@ can [see the source for it by adding '.text' to the URL](/projects/markdown/synt
 
 ----
 
-## Overview [](#){name=overview}
+## Overview [](){name=overview}
 
 ### Philosophy [](#){name=philosophy}
 
