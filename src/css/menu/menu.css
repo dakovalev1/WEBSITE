@@ -53,6 +53,7 @@ li.menu-title a{
     line-height:50px;
     display: inline-block;
     font-size: 20px;
+    transition: color 0.2s;
 }
 
 li.menu-item a{
@@ -60,6 +61,13 @@ li.menu-item a{
     line-height:50px;
     display: block;
     font-size: 17px;
-    transition: padding 0.1s, color 0.2s;
+    transition: color 0.2s;
+}
+
+li.menu-title a:hover{
+    color: #89f;
+}
+li.menu-item a:hover{
+    color: #89f;
 }
 

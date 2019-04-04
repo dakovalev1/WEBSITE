@@ -106,7 +106,9 @@ def make_head():
             crossorigin="anonymous"),
         
         builder.LINK(rel="stylesheet",href="css/menu/menu.css"),
-        builder.LINK(rel="stylesheet",href="css/common/common.css")
+        builder.LINK(rel="stylesheet",href="css/common/common.css"),
+
+        builder.SCRIPT("", src="js/menu.js"),
     ]
 
     return head
@@ -150,9 +152,10 @@ def gen_posts(p_list):
 
     for post in p_list:
         html_content = builder.DIV(
-            builder.H1(post.title),
-            builder.DIV(post.date.strftime("%d %B %Y, %H:%M")),
-            builder.DIV(html.fromstring(post.content))
+            builder.H1(post.title, builder.CLASS("full-post-title")),
+            builder.DIV(post.date.strftime("%d %B %Y, %H:%M"), builder.CLASS("full-post-date")),
+            builder.DIV(html.fromstring(post.content), builder.CLASS("full-post-content")),
+            builder.CLASS("full-post-container")
         )
 
         page = builder.HTML(
@@ -178,7 +181,7 @@ def gen_papers(p_list):
 def gen_contact():
     index = builder.HTML(
         builder.HEAD(*make_head()),
-        builder.BODY(make_menu(), builder.H1("contact: TODO"))
+        builder.BODY(make_menu(), builder.DIV("contact",builder.CLASS("section")))
     )
     print(html.etree.tostring(index, pretty_print=True).decode("utf-8"), file=open("docs/contact.html", "w"))
 
@@ -189,7 +192,7 @@ if os.path.exists("docs"):
 os.mkdir("docs")
 os.mkdir("docs/posts")
 shutil.copytree("src/css", "docs/css")
-
+shutil.copytree("src/js", "docs/js")
 
 post_list = load_posts()
 paper_list = load_papers()
