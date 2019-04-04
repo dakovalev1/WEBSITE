@@ -31,6 +31,7 @@ def load_posts():
 
 def make_head():
     head = [
+        builder.BASE(href="http://localhost/my_site/docs/"),
         builder.META(charset="utf-8"),
         builder.TITLE("Author Name"),
         builder.META(name="viewport", content = "width=device-width, initial-scale=1"),
@@ -41,8 +42,8 @@ def make_head():
             "extensions: [\"MathMenu.js\", \"MathZoom.js\"]});",
             type="text/x-mathjax-config"),
         builder.SCRIPT("", src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"),
-        builder.SCRIPT("", src="js/jquery.waypoints.min.js"),
-        builder.SCRIPT("", src="js/jquery.scrollTo.min.js"),
+        #builder.SCRIPT("", src="js/jquery.waypoints.min.js"),
+        #builder.SCRIPT("", src="js/jquery.scrollTo.min.js"),
         builder.LINK(rel="stylesheet",
             href="https://use.fontawesome.com/releases/v5.8.1/css/all.css",
             integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf",
@@ -67,7 +68,7 @@ def make_short_posts(p_list):
     for post in p_list:
         tag_list.append(builder.DIV(
             builder.H1(
-                builder.A(post.title, href=post.id + ".html"),
+                builder.A(post.title, href="posts/" + post.id + ".html"),
                 builder.CLASS("post-title")
             ),
             builder.P(post.summary),
@@ -75,14 +76,43 @@ def make_short_posts(p_list):
             builder.CLASS("post-container")))
     return tag_list
 
-index = builder.HTML(
-    builder.HEAD(
-            *make_head()
-        ),
-    builder.BODY(make_menu(),
-        builder.DIV(*make_short_posts(load_posts()))
-    )
-    )
 
 
-print(html.etree.tostring(index, pretty_print=True).decode("utf-8"), file=open("index.html", "w"))
+def gen_index(p_list):
+    index = builder.HTML(
+        builder.HEAD(*make_head()),
+        builder.BODY(make_menu(), builder.DIV(*make_short_posts(p_list)))
+    )
+
+    print(html.etree.tostring(index, pretty_print=True).decode("utf-8"), file=open("docs/index.html", "w"))
+
+def gen_posts(p_list):
+    for post in p_list:
+        html_content = builder.DIV(
+            builder.H1(post.title),
+            builder.DIV(post.date.strftime("%d %B %Y, %H:%M")),
+            builder.DIV(html.fromstring(post.content))
+        )
+
+        page = builder.HTML(
+            builder.HEAD(*make_head()),
+            builder.BODY(make_menu(), html_content)
+        )
+        print(html.etree.tostring(page, pretty_print=True).decode("utf-8"), file=open("docs/posts/" + post.id + ".html", "w"))
+
+
+if os.path.exists("docs"):
+        shutil.rmtree("docs")
+
+os.mkdir("docs")
+os.mkdir("docs/posts")
+
+
+post_list = load_posts()
+
+gen_index(post_list)
+gen_posts(post_list)
+
+
+
+
