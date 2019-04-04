@@ -14,7 +14,7 @@ class Post:
         self.id = id
         self.content = md.convert(text)
         self.title = md.Meta['title'][0]
-        self.summary = md.Meta['summary'][0]
+        self.summary = markdown.markdown(md.Meta['summary'][0], extensions=['mdx_math'])
         self.date = dateparser.parse(md.Meta['date'][0])
 
 class Paper:
@@ -57,7 +57,7 @@ def make_short_posts(p_list):
                 builder.A(post.title, href="posts/" + post.id + ".html"),
                 builder.CLASS("post-title")
             ),
-            builder.P(post.summary),
+            html.fromstring(post.summary),
             builder.DIV(post.date.strftime("%d %b %Y, %H:%M"), builder.CLASS("post-date")),
             builder.CLASS("post-container")))
     return tag_list
@@ -87,7 +87,8 @@ def make_short_papers(p_list):
 
 def make_head():
     head = [
-        builder.BASE(href="http://localhost/my_site/docs/"), # ONLY FOR DEBUG!!!
+        builder.BASE(href="https://dakovalev1.github.io/my_site/"),
+        #builder.BASE(href="http://localhost/my_site/docs/"), # ONLY FOR DEBUG!!!
         builder.META(charset="utf-8"),
         builder.TITLE("Author Name"),
         builder.META(name="viewport", content = "width=device-width, initial-scale=1"),
