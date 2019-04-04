@@ -103,7 +103,10 @@ def make_head():
         builder.LINK(rel="stylesheet",
             href="https://use.fontawesome.com/releases/v5.8.1/css/all.css",
             integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf",
-            crossorigin="anonymous")
+            crossorigin="anonymous"),
+        
+        builder.LINK(rel="stylesheet",href="css/menu/menu.css"),
+        builder.LINK(rel="stylesheet",href="css/common/common.css")
     ]
 
     return head
@@ -126,7 +129,7 @@ def make_menu():
 def gen_index(p_list):
     index = builder.HTML(
         builder.HEAD(*make_head()),
-        builder.BODY(make_menu())
+        builder.BODY(make_menu(), builder.DIV("todo",builder.CLASS("section")))
     )
 
     print(html.etree.tostring(index, pretty_print=True).decode("utf-8"), file=open("docs/index.html", "w"))
@@ -137,8 +140,9 @@ def gen_posts(p_list):
         builder.BODY(
             make_menu(),
             builder.DIV(
-                builder.H1("Posts"),
-                *make_short_posts(p_list)
+                builder.H1("Posts", builder.CLASS("section-title")),
+                *make_short_posts(p_list),
+                builder.CLASS("section")
             )
         )
     )
@@ -163,8 +167,9 @@ def gen_papers(p_list):
         builder.BODY(
             make_menu(),
             builder.DIV(
-                builder.H1("Papers"),
-                *make_short_papers(p_list)
+                builder.H1("Papers", builder.CLASS("section-title")),
+                *make_short_papers(p_list),
+                builder.CLASS("section")
             )
         )
     )
@@ -183,6 +188,7 @@ if os.path.exists("docs"):
 
 os.mkdir("docs")
 os.mkdir("docs/posts")
+shutil.copytree("src/css", "docs/css")
 
 
 post_list = load_posts()

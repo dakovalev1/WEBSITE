@@ -1,0 +1,43 @@
+body{
+    padding: 0;
+    margin:0;
+    margin-top:50px;
+}
+
+
+div.section{
+    background-color: #f7f7f7;
+    padding: 15px;
+}
+h1.section-title{
+    font-family:"Helvetica";
+    font-weight:400;
+}
+
+
+div.post-container{
+    background-color:white;
+    padding: 15px;
+    margin: 15px 0;
+}
+h1.post-title{
+    margin-top: 0px;
+}
+h1.post-title a{
+    text-decoration: none;
+    color: black;
+    transition: color 0.5s;
+}
+h1.post-title a:hover{
+    text-decoration: none;
+    color: #45b;
+}
+
+div.paper-container{
+    background-color:white;
+    padding: 15px;
+    margin: 15px 0;
+}
+h1.paper-title{
+    margin-top: 0px;
+}
