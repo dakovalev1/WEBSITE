@@ -132,9 +132,18 @@ def make_menu():
 
 
 def gen_index(p_list):
+
+    about = html.fromstring(open("src/html/about.html").read())
+
     index = builder.HTML(
-        builder.HEAD(*make_head()),
-        builder.BODY(make_menu(), builder.DIV("todo",builder.CLASS("section")))
+        builder.HEAD(*make_head(), builder.LINK(rel="stylesheet",href="css/about/about.css")),
+        builder.BODY(
+            make_menu(),
+            builder.DIV(
+                about,
+                builder.H1("About", builder.CLASS("section-title")),
+                builder.CLASS("section"))
+        )
     )
 
     print(html.etree.tostring(index, pretty_print=True).decode("utf-8"), file=open("docs/index.html", "w"))
@@ -199,6 +208,7 @@ os.mkdir("docs")
 os.mkdir("docs/posts")
 shutil.copytree("src/css", "docs/css")
 shutil.copytree("src/js", "docs/js")
+shutil.copytree("res", "docs/res")
 
 post_list = load_posts()
 paper_list = load_papers()

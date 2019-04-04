@@ -1,0 +1,24 @@
+
+
+img.avatar{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border-radius: 50%;
+}
+
+h1.author-name{
+    background-color: red;
+    text-align: center;
+}
+
+div.author-position{
+    background-color: red;
+    text-align: center;
+}
+
+div.author-institution{
+    background-color: red;
+    text-align: center;
+}
