@@ -6,6 +6,7 @@ import numpy
 import lxml.html as html
 import lxml.html.builder as builder
 import dateparser
+import sys
 
 
 class Post:
@@ -87,8 +88,9 @@ def make_short_papers(p_list):
 
 def make_head():
     head = [
-        builder.BASE(href="https://dakovalev1.github.io/my_site/"),
+        #builder.BASE(href="https://dakovalev1.github.io/my_site/"),
         #builder.BASE(href="http://localhost/my_site/docs/"), # ONLY FOR DEBUG!!!
+        builder.BASE(href=sys.argv[1]),
         builder.META(charset="utf-8"),
         builder.TITLE("Author Name"),
         builder.META(name="viewport", content = "width=device-width, initial-scale=1"),
@@ -186,6 +188,9 @@ def gen_contact():
     )
     print(html.etree.tostring(index, pretty_print=True).decode("utf-8"), file=open("docs/contact.html", "w"))
 
+if len(sys.argv) != 2:
+    print("usage: python main.py <baseurl>")
+    exit(0)
 
 if os.path.exists("docs"):
         shutil.rmtree("docs")
