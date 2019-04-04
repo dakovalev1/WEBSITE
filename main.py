@@ -11,7 +11,7 @@ import sys
 
 class Post:
     def __init__(self, id, text):
-        md = markdown.Markdown(extensions=['mdx_math', 'meta'])
+        md = markdown.Markdown(extensions=['mdx_math', 'meta', 'extra'])
         self.id = id
         self.content = md.convert(text)
         self.title = md.Meta['title'][0]
@@ -107,7 +107,9 @@ def make_head():
             href="https://use.fontawesome.com/releases/v5.8.1/css/all.css",
             integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf",
             crossorigin="anonymous"),
-        
+        builder.LINK(rel="stylesheet",
+            href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"),
+
         builder.LINK(rel="stylesheet",href="css/menu/menu.css"),
         builder.LINK(rel="stylesheet",href="css/common/common.css"),
 
@@ -139,10 +141,7 @@ def gen_index(p_list):
         builder.HEAD(*make_head(), builder.LINK(rel="stylesheet",href="css/about/about.css")),
         builder.BODY(
             make_menu(),
-            builder.DIV(
-                about,
-                builder.H1("About", builder.CLASS("section-title")),
-                builder.CLASS("section"))
+            about
         )
     )
 
