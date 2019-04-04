@@ -39,39 +39,26 @@ def make_menu():
     )
     return menu
 
-
-
-
-
-
-# <meta charset="utf-8">
-# <title>Author Name</title>
-# <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-# <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js" async></script>
-# <script type="text/x-mathjax-config">
-#     MathJax.Hub.Config({
-#         config: ["MMLorHTML.js"],
-#         jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
-#         extensions: ["MathMenu.js", "MathZoom.js"]
-#     });
-# </script>
-
-# <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-# <script src="js/jquery.waypoints.min.js"></script>
-# <script src="js/jquery.scrollTo.min.js"></script>
-
-
-# <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-
-
+def make_short_posts(count = None):
+    p_list = []
+    for i in range(0,10):
+        p_list.append(builder.DIV(
+            builder.H1(
+                builder.A(str(i), href=str(i)+".html"),
+                builder.CLASS("post-title")
+            ),
+            builder.P("Summary"),
+            builder.DIV("00.00.0000", builder.CLASS("post-date")),
+            builder.CLASS("post-container")))
+    return p_list
 
 index = builder.HTML(
     builder.HEAD(
             *make_head()
         ),
-    builder.BODY(make_menu())
+    builder.BODY(make_menu(),
+        builder.DIV(*make_short_posts())
+    )
     )
 
-print(html.etree.tostring(index, pretty_print=True).decode("utf-8"), file=open("huj.html", "w"))
+print(html.etree.tostring(index, pretty_print=True).decode("utf-8"), file=open("index.html", "w"))
