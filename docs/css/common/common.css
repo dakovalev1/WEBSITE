@@ -45,6 +45,14 @@ div.paper-container{
 }
 h1.paper-title{
     margin-top: 0px;
+    font-size: 25px;
+}
+div.paper-authors{
+    font-family: Arial, Helvetica, sans-serif
+}
+div.paper-date{
+    color: rgb(46, 46, 46);
+    font-family: 'Courier New', Courier, monospace;
 }
 
 

@@ -78,7 +78,7 @@ def make_short_papers(p_list):
                 builder.CLASS("paper-title")
             ),
             builder.DIV(html.fromstring(authors), builder.CLASS("paper-authors")),
-            builder.DIV(paper.date.strftime("%d %b %Y, %H:%M"), builder.CLASS("paper-date")),
+            builder.DIV(paper.date.strftime("%d %b %Y"), builder.CLASS("paper-date")),
             builder.CLASS("paper-container")))
     return tag_list
 
