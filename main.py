@@ -5,6 +5,29 @@ import configparser
 import numpy
 import lxml.html as html
 import lxml.html.builder as builder
+import dateparser
+
+
+class Post:
+    def __init__(self, id, text):
+        md = markdown.Markdown(extensions=['mdx_math', 'meta'])
+        self.id = id
+        self.content = md.convert(text)
+        self.title = md.Meta['title'][0]
+        self.summary = md.Meta['summary'][0]
+        self.date = dateparser.parse(md.Meta['date'][0])
+        
+
+
+def load_posts():
+    p_list = []
+    for root, dirs, files in os.walk("posts"):
+        for name in dirs:
+            input = open(os.path.join(root, name, "index.md"), "r")
+            p_list.append(Post(name, input.read()))
+        break
+    p_list.sort(key=lambda p: p.date)
+    return p_list
 
 def make_head():
     head = [
@@ -39,26 +62,27 @@ def make_menu():
     )
     return menu
 
-def make_short_posts(count = None):
-    p_list = []
-    for i in range(0,10):
-        p_list.append(builder.DIV(
+def make_short_posts(p_list):
+    tag_list = []
+    for post in p_list:
+        tag_list.append(builder.DIV(
             builder.H1(
-                builder.A(str(i), href=str(i)+".html"),
+                builder.A(post.title, href=post.id + ".html"),
                 builder.CLASS("post-title")
             ),
-            builder.P("Summary"),
-            builder.DIV("00.00.0000", builder.CLASS("post-date")),
+            builder.P(post.summary),
+            builder.DIV(post.date.strftime("%d %b %Y, %H:%M"), builder.CLASS("post-date")),
             builder.CLASS("post-container")))
-    return p_list
+    return tag_list
 
 index = builder.HTML(
     builder.HEAD(
             *make_head()
         ),
     builder.BODY(make_menu(),
-        builder.DIV(*make_short_posts())
+        builder.DIV(*make_short_posts(load_posts()))
     )
     )
+
 
 print(html.etree.tostring(index, pretty_print=True).decode("utf-8"), file=open("index.html", "w"))
