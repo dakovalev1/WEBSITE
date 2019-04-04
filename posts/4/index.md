@@ -3,25 +3,12 @@ summary: Test of all markdown features.
 date: 04 April 2019 
 
 
-# Header 1
-123
-## Header 2
-123
-### Header 3
-123
-#### Header 4
-123
-##### Header 5
-123
-###### Header 6
-123
-
 # Markdown: Syntax
 
 *   [Overview](#overview)
     *   [Philosophy](#philosophy)
-    *   [Inline HTML](#html)
-    *   [Automatic Escaping for Special Characters](#autoescape)
+    *   [Inline HTML]()
+    *   [Automatic Escaping for Special Characters]()
 *   [Block Elements](#block)
     *   [Paragraphs and Line Breaks](#p)
     *   [Headers](#header)
@@ -44,9 +31,9 @@ can [see the source for it by adding '.text' to the URL](/projects/markdown/synt
 
 ----
 
-## Overview
+## Overview [](#){name=overview}
 
-### Philosophy
+### Philosophy [](#){name=philosophy}
 
 Markdown is intended to be as easy-to-read and easy-to-write as is feasible.
 
@@ -58,9 +45,9 @@ filters -- including [Setext](http://docutils.sourceforge.net/mirror/setext.html
 [Grutatext](http://www.triptico.com/software/grutatxt.html), and [EtText](http://ettext.taint.org/doc/) -- the single biggest source of
 inspiration for Markdown's syntax is the format of plain text email.
 
-## Block Elements
+## Block Elements [](#){name=block}
 
-### Paragraphs and Line Breaks
+### Paragraphs and Line Breaks [](#){name=p}
 
 A paragraph is simply one or more consecutive lines of text, separated
 by one or more blank lines. (A blank line is any line that looks like a
@@ -76,7 +63,7 @@ character in a paragraph into a `<br />` tag.
 When you *do* want to insert a `<br />` break tag using Markdown, you
 end a line with two or more spaces, then type return.
 
-### Headers
+### Headers [](#){name=header}
 
 Markdown supports two styles of headers, [Setext] [1] and [atx] [2].
 
@@ -87,7 +74,7 @@ used to open the header. (The number of opening hashes
 determines the header level.)
 
 
-### Blockquotes
+### Blockquotes [](#){name=blockquote}
 
 Markdown uses email-style `>` characters for blockquoting. If you're
 familiar with quoting passages of text in an email message, then you
@@ -137,7 +124,7 @@ example, with BBEdit, you can make a selection and choose Increase
 Quote Level from the Text menu.
 
 
-### Lists
+### Lists [](#){name=list}
 
 Markdown supports ordered (numbered) and unordered (bulleted) lists.
 
@@ -244,7 +231,7 @@ to be indented *twice* -- 8 spaces or two tabs:
 
         <code goes here>
 
-### Code Blocks
+### Code Blocks [](#){name=precode}
 
 Pre-formatted code blocks are used for writing about programming or
 markup source code. Rather than forming normal paragraphs, the lines
@@ -287,9 +274,9 @@ tell application "Foo"
 end tell
 ```
 
-## Span Elements
+## Span Elements [](#){name=span}
 
-### Links
+### Links [](#){name=link}
 
 Markdown supports two style of links: *inline* and *reference*.
 
@@ -304,7 +291,7 @@ This is [an example](http://example.com/) inline link.
 
 [This link](http://example.net/) has no title attribute.
 
-### Emphasis
+### Emphasis [](#){name=em}
 
 Markdown treats asterisks (`*`) and underscores (`_`) as indicators of
 emphasis. Text wrapped with one `*` or `_` will be wrapped with an
@@ -319,7 +306,7 @@ _single underscores_
 
 __double underscores__
 
-### Code
+### Code [](#){name=code}
 
 To indicate a span of code, wrap it with backtick quotes (`` ` ``).
 Unlike a pre-formatted code block, a code span indicates code within a

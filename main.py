@@ -8,6 +8,8 @@ import lxml.html.builder as builder
 import dateparser
 import sys
 
+base_url = ""
+
 
 class Post:
     def __init__(self, id, text):
@@ -90,7 +92,7 @@ def make_head():
     head = [
         #builder.BASE(href="https://dakovalev1.github.io/my_site/"),
         #builder.BASE(href="http://localhost/my_site/docs/"), # ONLY FOR DEBUG!!!
-        builder.BASE(href=sys.argv[1]),
+        #builder.BASE(href=sys.argv[1]),
         builder.META(charset="utf-8"),
         builder.TITLE("Author Name"),
         builder.META(name="viewport", content = "width=device-width, initial-scale=1"),
@@ -110,21 +112,20 @@ def make_head():
         builder.LINK(rel="stylesheet",
             href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"),
 
-        builder.LINK(rel="stylesheet",href="css/menu/menu.css"),
-        builder.LINK(rel="stylesheet",href="css/common/common.css"),
+        builder.LINK(rel="stylesheet",href=base_url + "css/menu/menu.css"),
+        builder.LINK(rel="stylesheet",href=base_url + "css/common/common.css"),
 
-        builder.SCRIPT("", src="js/menu.js"),
+        builder.SCRIPT("", src=base_url + "js/menu.js"),
     ]
 
     return head
 def make_menu():
     menu = builder.UL(
         builder.LI(builder.A(builder.I("", builder.CLASS("fas fa-bars")), href=""), builder.CLASS("menu-button")),
-        builder.LI(builder.A(builder.B("Author Name"), href="index.html"), builder.CLASS("menu-title")),
-        #builder.LI(builder.A(builder.B("Home"), href="index.html"), builder.CLASS("menu-item")),
-        builder.LI(builder.A(builder.B("Posts"), href="posts.html"), builder.CLASS("menu-item")),
-        builder.LI(builder.A(builder.B("Papers"), href="papers.html"), builder.CLASS("menu-item")),
-        builder.LI(builder.A(builder.B("Contact"), href="contact.html"), builder.CLASS("menu-item")),
+        builder.LI(builder.A(builder.B("Author Name"), href=base_url+"index.html"), builder.CLASS("menu-title")),
+        builder.LI(builder.A(builder.B("Posts"), href=base_url+"posts.html"), builder.CLASS("menu-item")),
+        builder.LI(builder.A(builder.B("Papers"), href=base_url+"papers.html"), builder.CLASS("menu-item")),
+        builder.LI(builder.A(builder.B("Contact"), href=base_url+"contact.html"), builder.CLASS("menu-item")),
         builder.CLASS("menu")
     )
     return menu
@@ -145,7 +146,8 @@ def gen_index(p_list):
         )
     )
 
-    print(html.etree.tostring(index, pretty_print=True).decode("utf-8"), file=open("docs/index.html", "w"))
+
+    print(html.etree.tostring(index, pretty_print=True, method='html').decode("utf-8"), file=open("docs/index.html", "w"))
 
 def gen_posts(p_list):
     index = builder.HTML(
@@ -159,7 +161,7 @@ def gen_posts(p_list):
             )
         )
     )
-    print(html.etree.tostring(index, pretty_print=True).decode("utf-8"), file=open("docs/posts.html", "w"))
+    print(html.etree.tostring(index, pretty_print=True, method='html').decode("utf-8"), file=open("docs/posts.html", "w"))
 
     for post in p_list:
         html_content = builder.DIV(
@@ -173,7 +175,7 @@ def gen_posts(p_list):
             builder.HEAD(*make_head()),
             builder.BODY(make_menu(), html_content)
         )
-        print(html.etree.tostring(page, pretty_print=True).decode("utf-8"), file=open("docs/posts/" + post.id + ".html", "w"))
+        print(html.etree.tostring(page, pretty_print=True, method='html').decode("utf-8"), file=open("docs/posts/" + post.id + ".html", "w"))
     
 def gen_papers(p_list):
     index = builder.HTML(
@@ -187,18 +189,20 @@ def gen_papers(p_list):
             )
         )
     )
-    print(html.etree.tostring(index, pretty_print=True).decode("utf-8"), file=open("docs/papers.html", "w"))
+    print(html.etree.tostring(index, pretty_print=True, method='html').decode("utf-8"), file=open("docs/papers.html", "w"))
 
 def gen_contact():
     index = builder.HTML(
         builder.HEAD(*make_head()),
         builder.BODY(make_menu(), builder.DIV("contact",builder.CLASS("section")))
     )
-    print(html.etree.tostring(index, pretty_print=True).decode("utf-8"), file=open("docs/contact.html", "w"))
+    print(html.etree.tostring(index, pretty_print=True, method='html').decode("utf-8"), file=open("docs/contact.html", "w"))
 
 if len(sys.argv) != 2:
     print("usage: python main.py <baseurl>")
     exit(0)
+else:
+    base_url = sys.argv[1]
 
 if os.path.exists("docs"):
         shutil.rmtree("docs")
