@@ -12,11 +12,6 @@ $(document).ready(function(){
         }
         return false;
     });
-    
-    $("ul.menu li.menu-item a").click(function(){
-        menu_toggle = false;
-        $("ul.menu").css("height", "50px");
-    });
 
     $(window).resize(function(){
         if ($("li.menu-button").css("display") == "none"){
