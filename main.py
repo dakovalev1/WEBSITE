@@ -112,8 +112,8 @@ def make_head():
         builder.LINK(rel="stylesheet",
             href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"),
 
-        builder.LINK(rel="stylesheet",href=base_url + "css/menu/menu.css"),
-        builder.LINK(rel="stylesheet",href=base_url + "css/common/common.css"),
+        builder.LINK(rel="stylesheet",href=base_url + "css/menu.css"),
+        builder.LINK(rel="stylesheet",href=base_url + "css/common.css"),
 
         builder.SCRIPT("", src=base_url + "js/menu.js"),
         builder.SCRIPT("", src=base_url + "js/scroll.js"),
@@ -141,7 +141,7 @@ def gen_index(p_list):
     about = html.fromstring(open("src/html/about.html").read())
 
     index = builder.HTML(
-        builder.HEAD(*make_head(), builder.LINK(rel="stylesheet",href="css/about/about.css")),
+        builder.HEAD(*make_head(), builder.LINK(rel="stylesheet",href="css/about.css")),
         builder.BODY(
             make_menu(),
             about
