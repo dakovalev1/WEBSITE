@@ -32,7 +32,6 @@ h1.section-title{
 div.full-post-container{
     padding: 15px;
     background-color:white;
-    display: inline-block;
 }
 h1.full-post-title{
     margin: 15px 0;
@@ -44,10 +43,10 @@ div.full-post-date{
 div.full-post-content{
     background-color: white;
     padding: 15px;
-    display: inline-block;
     border-style: solid;
     border-radius: 5px;
     border-color: #45b;
+    overflow-x: scroll
 }
 
 div.post-container{
