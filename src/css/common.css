@@ -1,40 +1,32 @@
 body{
     padding: 0;
     margin:0;
-    margin-top:50px;
     padding: 0;
+
     font-family:"Helvetica";
     font-weight:400;
-
-    font-size: 16px;
-    line-height: 28px;
 }
 
 img{
     width:100%;
 }
 
-a{
-    color:#45b;
-}
-a:visited { 
-    color:#45b;
-}
-
 div.section{
     background-color: white;
-    padding: 15px;
+    display: block;
+    padding-top: 10px;
 }
 h1.section-title{
     font-weight: 400;
 }
 
 div.full-post-container{
-    padding: 15px;
     background-color:white;
+    display: block;
+    padding-top: 10px;
 }
 h1.full-post-title{
-    margin: 15px 0;
+    margin-bottom: 15px;
 }
 div.full-post-date{
     color: rgb(100, 100, 100);
@@ -42,11 +34,6 @@ div.full-post-date{
 }
 div.full-post-content{
     background-color: white;
-    padding: 15px;
-    border-style: solid;
-    border-radius: 5px;
-    border-color: #45b;
-    overflow-x: scroll;
 }
 
 div.post-container{
@@ -55,7 +42,6 @@ div.post-container{
     margin: 15px 0;
     border-style: solid;
     border-radius: 5px;
-    border-color: #45b;
 }
 h1.post-title{
     margin-top: 0px;
@@ -68,9 +54,6 @@ h1.post-title a{
     text-decoration: none;
     color: black;
     transition: color 0.5s;
-}
-h1.post-title a:hover{
-    color: #45b;
 }
 
 
@@ -89,3 +72,159 @@ h1.paper-title{
 div.paper-date{
     color: rgb(100, 100, 100);
 }
+div.paper-authors{
+    color: #45b;
+    text-decoration: underline;
+}
+
+
+@media(max-width: 599px)
+{
+    body{
+        margin-top:50px;
+        font-size: 16px;
+        line-height: 32px;
+    }
+    a{
+        color:#45b;
+    }
+    a:visited { 
+        color:#45b;
+    }
+    div.section{
+        margin: 0 15px;
+    }
+    div.full-post-container{
+        margin: 0 15px;
+    }
+    div.full-post-content{
+        padding: 15px;
+        border-style : solid;
+        border-color: #45b;
+        border-radius: 15px;
+        overflow-x: scroll;
+    }
+    
+    div.post-container{
+        border-color: #45b;
+    }
+    h1.post-title a:hover{
+        color: #45b;
+    }
+}
+
+@media(max-width: 899px) and (min-width: 600px)
+{
+    body{
+        margin-top:50px;
+        font-size: 16px;
+        line-height: 32px;
+    }
+    a{
+        color:red;
+    }
+    a:visited { 
+        color:red;
+    }
+    div.section{
+        width:570px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    div.full-post-container{
+        width:570px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    div.full-post-content{
+        padding: 15px;
+        border-style : solid;
+        border-color: red;
+        border-radius: 15px;
+        overflow-x: scroll;
+    }
+
+    div.post-container{
+        border-color: red;
+    }
+    h1.post-title a:hover{
+        color: red;
+    }
+
+    div.paper-container{
+        border-color: red;
+    }
+}
+
+@media(max-width: 1199px) and (min-width: 900px)
+{
+    body{
+        margin-top:50px;
+        font-size: 20px;
+        line-height: 40px;
+    }
+    a{
+        color:green;
+    }
+    a:visited { 
+        color:green;
+    }
+    div.section{
+        width:765px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    div.full-post-container{
+        width:765px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    div.post-container{
+        border-color: green;
+    }
+    h1.post-title a:hover{
+        color: green;
+    }
+
+    div.paper-container{
+        border-color: green;
+    }
+}
+
+@media(min-width: 1200px)
+{
+    body{
+        margin-top:70px;
+        font-size: 20px;
+        line-height: 40px;
+    }
+    a{
+        color:darkorange;
+    }
+    a:visited { 
+        color:darkorange;
+    }
+    div.section{
+        width:1115px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    div.full-post-container{
+        width:1115px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    div.post-container{
+        border-color: darkorange;
+    }
+    h1.post-title a:hover{
+        color: darkorange;
+    }
+
+    div.paper-container{
+        border-color: darkorange;
+    }
+}
+
