@@ -33,6 +33,11 @@ li.menu-button{
     float: right;
 }
 
+li.menu-button i{
+    height: 50px;
+    line-height: 50px;
+}
+
 li.menu-button a{
     font-size: 20px;
     display: inline-block;
