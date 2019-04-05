@@ -94,7 +94,7 @@ def make_head():
         #builder.BASE(href="http://localhost/my_site/docs/"), # ONLY FOR DEBUG!!!
         #builder.BASE(href=sys.argv[1]),
         builder.META(charset="utf-8"),
-        builder.TITLE("Author Name"),
+        builder.TITLE("Dmitry Kovalev"),
         builder.META(name="viewport", content = "width=device-width, initial-scale=1"),
         builder.SCRIPT("", type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js",async="async"),
         builder.SCRIPT("MathJax.Hub.Config({" +
@@ -131,7 +131,7 @@ def make_menu(index = False):
 
     menu = builder.UL(
         builder.LI(builder.A(builder.I("", builder.CLASS("fas fa-bars")), href=""), builder.CLASS("menu-button")),
-        builder.LI(builder.A(builder.B("Author Name"), href=base_url+"index.html"), builder.CLASS("menu-title")),
+        builder.LI(builder.A(builder.B("Dmitry Kovalev"), href=base_url+"index.html"), builder.CLASS("menu-title")),
         builder.LI(builder.A(builder.B("Posts"), href=base_url+"posts.html"), builder.CLASS("menu-item")),
         builder.LI(builder.A(builder.B("Papers"), href=base_url+"papers.html"), builder.CLASS("menu-item")),
         builder.LI(contact, builder.CLASS("menu-item")),
