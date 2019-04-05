@@ -26,7 +26,7 @@ $(document).ready(function(){
         } else {
             offset = 50;
         }
-        
+        $('html, body').stop(true);
         $('html, body').animate({
             scrollTop: elem.offset().top - offset
           }, 800);
