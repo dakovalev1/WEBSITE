@@ -3,6 +3,7 @@ target = target.replace('#', '');
 window.location.hash = "";
 
 
+
 $(document).ready(function(){
     var elem = $("a[name=\'" + target + "\']");
     if (elem.length == 1){
@@ -19,7 +20,7 @@ $(document).ready(function(){
         var elem = $("a[name=\'" + hash + "\']");
         
         $('html, body').animate({
-            scrollTop: elem.offset().top - 50
+            scrollTop: elem.offset().top - parseInt($("ul.menu").css("height"))
           }, 800);
         return false;
     });
