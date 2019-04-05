@@ -130,7 +130,7 @@ def make_menu():
         builder.LI(builder.A(builder.B("Contact"), href=base_url+"contact.html"), builder.CLASS("menu-item")),
         builder.CLASS("menu")
     )
-    return menu
+    return builder.DIV(menu, builder.CLASS("menu-container"))
 
 
 
