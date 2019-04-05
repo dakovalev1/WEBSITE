@@ -121,13 +121,20 @@ def make_head():
     ]
 
     return head
-def make_menu():
+def make_menu(index = False):
+
+    if index:
+        contact = builder.A(builder.B("Contact"), builder.CLASS("hashtag"), href="#contact")
+    else:
+        contact = builder.A(builder.B("Contact"), href=base_url+"index.html#contact")
+
+
     menu = builder.UL(
         builder.LI(builder.A(builder.I("", builder.CLASS("fas fa-bars")), href=""), builder.CLASS("menu-button")),
         builder.LI(builder.A(builder.B("Author Name"), href=base_url+"index.html"), builder.CLASS("menu-title")),
         builder.LI(builder.A(builder.B("Posts"), href=base_url+"posts.html"), builder.CLASS("menu-item")),
         builder.LI(builder.A(builder.B("Papers"), href=base_url+"papers.html"), builder.CLASS("menu-item")),
-        builder.LI(builder.A(builder.B("Contact"), href=base_url+"contact.html"), builder.CLASS("menu-item")),
+        builder.LI(contact, builder.CLASS("menu-item")),
         builder.CLASS("menu")
     )
     return builder.DIV(menu, builder.CLASS("menu-container"))
@@ -143,7 +150,7 @@ def gen_index(p_list):
     index = builder.HTML(
         builder.HEAD(*make_head(), builder.LINK(rel="stylesheet",href="css/about.css")),
         builder.BODY(
-            make_menu(),
+            make_menu(index=True),
             about
         )
     )
@@ -193,13 +200,6 @@ def gen_papers(p_list):
     )
     print(html.etree.tostring(index, pretty_print=True, method='html').decode("utf-8"), file=open("docs/papers.html", "w"))
 
-def gen_contact():
-    index = builder.HTML(
-        builder.HEAD(*make_head()),
-        builder.BODY(make_menu(), builder.DIV("contact",builder.CLASS("section")))
-    )
-    print(html.etree.tostring(index, pretty_print=True, method='html').decode("utf-8"), file=open("docs/contact.html", "w"))
-
 if len(sys.argv) != 2:
     print("usage: python main.py <baseurl>")
     exit(0)
@@ -221,7 +221,6 @@ paper_list = load_papers()
 gen_index(post_list)
 gen_posts(post_list)
 gen_papers(paper_list)
-gen_contact()
 
 
 
