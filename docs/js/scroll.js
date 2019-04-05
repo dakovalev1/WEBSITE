@@ -18,9 +18,17 @@ $(document).ready(function(){
         hash = hash.replace("#", "");
         
         var elem = $("a[name=\'" + hash + "\']");
+
+        var offset = 0;
+
+        if ($("li.menu-button").css("display") == "none"){
+            offset = 70;
+        } else {
+            offset = 50;
+        }
         
         $('html, body').animate({
-            scrollTop: elem.offset().top - parseInt($("ul.menu").css("height"))
+            scrollTop: elem.offset().top - offset
           }, 800);
         return false;
     });
