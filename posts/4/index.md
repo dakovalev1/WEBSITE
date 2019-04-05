@@ -7,6 +7,7 @@ date: 04 April 2019
 
 *   [Overview](#overview){class=hashtag}
     *   [Philosophy](#philosophy){class=hashtag}
+*   [Latex](#latex){class=hashtag}
 *   [Block Elements](#block){class=hashtag}
     *   [Paragraphs and Line Breaks](#p){class=hashtag}
     *   [Headers](#header){class=hashtag}
@@ -18,11 +19,6 @@ date: 04 April 2019
     *   [Links](#link){class=hashtag}
     *   [Emphasis](#em){class=hashtag}
     *   [Code](#code){class=hashtag}
-    *   [Images](#img){class=hashtag}
-*   [Miscellaneous](#misc){class=hashtag}
-    *   [Backslash Escapes](#backslash){class=hashtag}
-    *   [Automatic Links](#autolink){class=hashtag}
-
 
 **Note:** This document is itself written using Markdown; you
 can [see the source for it by adding '.text' to the URL](/projects/markdown/syntax.text).
@@ -42,6 +38,13 @@ Markdown's syntax has been influenced by several existing text-to-HTML
 filters -- including [Setext](http://docutils.sourceforge.net/mirror/setext.html), [atx](http://www.aaronsw.com/2002/atx/), [Textile](http://textism.com/tools/textile/), [reStructuredText](http://docutils.sourceforge.net/rst.html),
 [Grutatext](http://www.triptico.com/software/grutatxt.html), and [EtText](http://ettext.taint.org/doc/) -- the single biggest source of
 inspiration for Markdown's syntax is the format of plain text email.
+
+## Latex [](){name=latex}
+
+Test some latex:
+$$
+    \|x^{k+1} - x^*\|^2 \leq \|x^k - x^*\|^2 (1 - \eta \mu) - \|x^k - y^k\|^2(1 - 2\eta\mu - \eta^2 L^2)
+$$
 
 ## Block Elements [](#){name=block}
 
@@ -311,3 +314,4 @@ Unlike a pre-formatted code block, a code span indicates code within a
 normal paragraph. For example:
 
 Use the `printf()` function.
+
