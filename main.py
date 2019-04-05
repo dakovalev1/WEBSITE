@@ -206,10 +206,28 @@ if len(sys.argv) != 2:
 else:
     base_url = sys.argv[1]
 
-if os.path.exists("docs"):
-        shutil.rmtree("docs")
+def del_path(path):
+    if os.path.exists(path):
+        shutil.rmtree(path)
 
-os.mkdir("docs")
+def del_file(path):
+    if os.path.exists(path):
+        os.remove(path)
+
+
+del_path("docs/posts")
+del_path("docs/css")
+del_path("docs/js")
+del_path("docs/res")
+
+del_file("docs/index.html")
+del_file("docs/posts.html")
+del_file("docs/papers.html")
+
+
+if not os.path.exists("docs"):
+    os.mkdir("docs")
+
 os.mkdir("docs/posts")
 shutil.copytree("src/css", "docs/css")
 shutil.copytree("src/js", "docs/js")
