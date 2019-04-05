@@ -22,6 +22,9 @@ ul.menu{
 ul.menu a{
     color: white;
     text-decoration: none;
+}
+
+ul.menu li{
     height: 50px;
     line-height:50px;
 }
@@ -31,17 +34,11 @@ li.menu-button{
 }
 
 li.menu-button a{
-    display: inline-block;
     font-size: 20px;
 }
-
-li.menu-button i{
-    line-height:50px;
-}
-
 li.menu-title a{
-    display: inline-block;
     font-size: 20px;
+    display: inline-block;
     transition: color 0.2s;
 }
 
