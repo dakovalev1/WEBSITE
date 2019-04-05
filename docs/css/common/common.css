@@ -46,7 +46,7 @@ div.full-post-content{
     border-style: solid;
     border-radius: 5px;
     border-color: #45b;
-    overflow-x: scroll
+    overflow-x: scroll;
 }
 
 div.post-container{
