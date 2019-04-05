@@ -1,6 +1,6 @@
 title: Markdown test
-summary: Test of all markdown features.
-date: 04 April 2019 
+summary: This is a post that I use to test how my web-site displays markdown content.
+date: 05 April 2019 19:53
 
 
 # Markdown: Syntax
