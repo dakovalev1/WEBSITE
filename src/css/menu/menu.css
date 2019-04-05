@@ -35,7 +35,7 @@ li.menu-button{
 
 li.menu-button a{
     font-size: 20px;
-    background-color: lawngreen;
+    display: inline-block;
 }
 li.menu-title a{
     font-size: 20px;
