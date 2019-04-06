@@ -56,15 +56,18 @@ h1.post-title a:hover{
 
 
 div.paper-container{
-    padding: 15px;
+    padding: 0;
     margin: 15px 0;
 }
 h1.paper-title{
-    margin-top: 0px;
+    margin: 0;
     font-size: 25px;
 }
 div.paper-date{
     color: rgb(100, 100, 100);
+}
+div.paper-authors p{
+    margin: 0;
 }
 /*div.paper-authors{
     color: #45b;

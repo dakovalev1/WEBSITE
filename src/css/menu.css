@@ -34,14 +34,16 @@ li.menu-item a:hover{
     color: #89f;
 }
 
+div.menu-container{
+    background-color:#45b;
+}
+ul.menu{
+    background-color:#45b;
+}
 
 @media(max-width: 599px)
 {
-    div.menu-container{
-        background-color:#45b;
-    }
     ul.menu{
-        background-color:#45b;
         margin:0 15px 0 15px;
         padding-right: 15px;
         width: auto;
@@ -72,11 +74,11 @@ li.menu-item a:hover{
 
 @media(max-width: 899px) and (min-width: 600px)
 {
-    div.menu-container{
+    /*div.menu-container{
         background-color: red;
-    }
+    }*/
     ul.menu{
-        background-color: red;
+        /*background-color: red;*/
         margin:0 auto 0 auto;
         padding-right: 15px;
         width: 555px;
@@ -107,11 +109,11 @@ li.menu-item a:hover{
 
 @media(max-width: 1199px) and (min-width: 900px)
 {
-    div.menu-container{
+    /*div.menu-container{
         background-color: green;
-    }
+    }*/
     ul.menu{
-        background-color: green;
+        /*background-color: green;*/
         margin:0 auto 0 auto;
         padding-right: 15px;
         width: 750px;
@@ -142,11 +144,11 @@ li.menu-item a:hover{
 
 @media(min-width: 1200px)
 {
-    div.menu-container{
+    /*div.menu-container{
         background-color: darkorange;
-    }
+    }*/
     ul.menu{
-        background-color: darkorange;
+        /*background-color: darkorange;*/
         margin:0 auto 0 auto;
         padding-right: 15px;
         width: 1100px;
