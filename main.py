@@ -151,7 +151,7 @@ def gen_index(p_list):
     about = html.fromstring(open("src/html/about.html").read())
 
     index = builder.HTML(
-        builder.HEAD(*make_head(), builder.LINK(rel="stylesheet",href="css/about.css")),
+        builder.HEAD(*make_head(), builder.LINK(rel="stylesheet",href=base_url + "css/about.css")),
         builder.BODY(
             make_menu(index=True),
             about
