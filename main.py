@@ -168,7 +168,8 @@ def gen_posts(p_list):
                 builder.H1("Posts", builder.CLASS("section-title")),
                 *make_short_posts(p_list),
                 builder.CLASS("section")
-            )
+            ),
+            style="background-color:#f7f7f7"
         )
     )
     print(html.etree.tostring(index, pretty_print=True, method='html').decode("utf-8"), file=open("docs/posts.html", "w"))
