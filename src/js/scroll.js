@@ -5,31 +5,39 @@ window.location.hash = "";
 
 
 $(document).ready(function(){
-    var elem = $("a[name=\'" + target + "\']");
-    if (elem.length == 1){
-        $('html, body').animate({
-            scrollTop: elem.offset().top - 50
-          }, 800);
+    
+    function scroll(elem){
+        if (elem.length == 1){
+            var offset = 0;
+            
+            if ($("li.menu-button").css("display") == "none"){
+                offset = 70;
+            } else {
+                offset = 50;
+            }
+
+            offset +=  $("div.menu-container").offset().top;
+
+            $('html, body').stop(true);
+            $('html, body').animate({
+                scrollTop: elem.offset().top - offset
+            }, 800);
+        }
     }
 
 
+    var elem = $("a[name=\'" + target + "\']");
+    scroll(elem);
+
+
     $("a.hashtag").click(function(){
+
         var hash = $(this).attr("href");
         hash = hash.replace("#", "");
         
         var elem = $("a[name=\'" + hash + "\']");
 
-        var offset = 0;
-
-        if ($("li.menu-button").css("display") == "none"){
-            offset = 70;
-        } else {
-            offset = 50;
-        }
-        $('html, body').stop(true);
-        $('html, body').animate({
-            scrollTop: elem.offset().top - offset
-          }, 800);
+        scroll(elem);
         return false;
     });
 });
