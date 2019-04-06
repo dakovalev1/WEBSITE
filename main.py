@@ -61,7 +61,7 @@ def make_short_posts(p_list):
                 builder.CLASS("post-title")
             ),
             html.fromstring(post.summary),
-            builder.DIV(post.date.strftime("%d %b %Y, %H:%M"), builder.CLASS("post-date")),
+            builder.DIV(post.date.strftime("%d %b. %Y, %H:%M"), builder.CLASS("post-date")),
             builder.CLASS("post-container")))
     return tag_list
 
@@ -81,7 +81,7 @@ def make_short_papers(p_list):
                 builder.CLASS("paper-title")
             ),
             builder.DIV(html.fromstring(authors), builder.CLASS("paper-authors")),
-            builder.DIV(paper.date.strftime("%d %b %Y"), builder.CLASS("paper-date")),
+            builder.DIV(paper.date.strftime("%d %b. %Y"), builder.CLASS("paper-date")),
             builder.CLASS("paper-container")))
     return tag_list
 
