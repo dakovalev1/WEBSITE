@@ -10,6 +10,8 @@ import sys
 
 base_url = ""
 
+base_path = "dakovalev1.github.io"
+
 
 class Post:
     def __init__(self, id, text):
@@ -157,7 +159,7 @@ def gen_index(p_list):
     )
 
 
-    print(html.etree.tostring(index, pretty_print=True, method='html').decode("utf-8"), file=open("docs/index.html", "w"))
+    print(html.etree.tostring(index, pretty_print=True, method='html').decode("utf-8"), file=open(os.path.join(base_path, "index.html"), "w"))
 
 def gen_posts(p_list):
     index = builder.HTML(
@@ -172,7 +174,7 @@ def gen_posts(p_list):
             style="background-color:#f7f7f7"
         )
     )
-    print(html.etree.tostring(index, pretty_print=True, method='html').decode("utf-8"), file=open("docs/posts.html", "w"))
+    print(html.etree.tostring(index, pretty_print=True, method='html').decode("utf-8"), file=open(os.path.join(base_path, "posts.html"), "w"))
 
     for post in p_list:
         html_content = builder.DIV(
@@ -186,7 +188,7 @@ def gen_posts(p_list):
             builder.HEAD(*make_head()),
             builder.BODY(make_menu(), html_content)
         )
-        print(html.etree.tostring(page, pretty_print=True, method='html').decode("utf-8"), file=open("docs/posts/" + post.id + ".html", "w"))
+        print(html.etree.tostring(page, pretty_print=True, method='html').decode("utf-8"), file=open(os.path.join(base_path, "posts/" + post.id + ".html"), "w"))
     
 def gen_papers(p_list):
     index = builder.HTML(
@@ -200,7 +202,7 @@ def gen_papers(p_list):
             )
         )
     )
-    print(html.etree.tostring(index, pretty_print=True, method='html').decode("utf-8"), file=open("docs/papers.html", "w"))
+    print(html.etree.tostring(index, pretty_print=True, method='html').decode("utf-8"), file=open(os.path.join(base_path, "papers.html"), "w"))
 
 if len(sys.argv) != 2:
     print("usage: python main.py <baseurl>")
@@ -209,31 +211,31 @@ else:
     base_url = sys.argv[1]
 
 def del_path(path):
-    if os.path.exists(path):
-        shutil.rmtree(path)
+    if os.path.exists(os.path.join(base_path, path)):
+        shutil.rmtree(os.path.join(base_path, path))
 
 def del_file(path):
-    if os.path.exists(path):
-        os.remove(path)
+    if os.path.exists(os.path.join(base_path, path)):
+        os.remove(os.path.join(base_path, path))
 
 
-del_path("docs/posts")
-del_path("docs/css")
-del_path("docs/js")
-del_path("docs/res")
+del_path("posts")
+del_path("css")
+del_path("js")
+del_path("res")
 
-del_file("docs/index.html")
-del_file("docs/posts.html")
-del_file("docs/papers.html")
+del_file("index.html")
+del_file("posts.html")
+del_file("papers.html")
 
 
-if not os.path.exists("docs"):
-    os.mkdir("docs")
+if not os.path.exists(base_path):
+    os.mkdir(base_path)
 
-os.mkdir("docs/posts")
-shutil.copytree("src/css", "docs/css")
-shutil.copytree("src/js", "docs/js")
-shutil.copytree("res", "docs/res")
+os.mkdir(os.path.join(base_path, "posts"))
+shutil.copytree("src/css", os.path.join(base_path, "css"))
+shutil.copytree("src/js", os.path.join(base_path, "js"))
+shutil.copytree("res", os.path.join(base_path, "res"))
 
 post_list = load_posts()
 paper_list = load_papers()
