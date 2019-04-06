@@ -127,12 +127,12 @@ def make_menu(index = False):
     if index:
         contact = builder.A(builder.B("Contact"), builder.CLASS("hashtag"), href="#contact")
     else:
-        contact = builder.A(builder.B("Contact"), href=base_url+"index.html#contact")
+        contact = builder.A(builder.B("Contact"), href=base_url+"#contact")
 
 
     menu = builder.UL(
         builder.LI(builder.A(builder.I("", builder.CLASS("fas fa-bars")), href=""), builder.CLASS("menu-button")),
-        builder.LI(builder.A(builder.B("Dmitry Kovalev"), href=base_url+"index.html"), builder.CLASS("menu-title")),
+        builder.LI(builder.A(builder.B("Dmitry Kovalev"), href=base_url), builder.CLASS("menu-title")),
         builder.LI(builder.A(builder.B("Posts"), href=base_url+"posts.html"), builder.CLASS("menu-item")),
         builder.LI(builder.A(builder.B("Papers"), href=base_url+"papers.html"), builder.CLASS("menu-item")),
         builder.LI(contact, builder.CLASS("menu-item")),
