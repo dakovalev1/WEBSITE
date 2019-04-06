@@ -100,6 +100,7 @@ def make_head():
         builder.SCRIPT("MathJax.Hub.Config({" +
             "config: [\"MMLorHTML.js\"], "+
             "jax: [\"input/TeX\", \"output/HTML-CSS\", \"output/NativeMML\"], "+
+            "\"HTML-CSS\": {linebreaks: { automatic: true, width: \"container\" }}, "
             "extensions: [\"MathMenu.js\", \"MathZoom.js\"]});",
             type="text/x-mathjax-config"),
         builder.SCRIPT("", src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"),

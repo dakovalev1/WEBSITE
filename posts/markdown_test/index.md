@@ -5,6 +5,8 @@ date: 05 April 2019 19:53
 
 # Markdown: Syntax
 
+111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+
 *   [Overview](#overview){class=hashtag}
     *   [Philosophy](#philosophy){class=hashtag}
 *   [Latex](#latex){class=hashtag}
@@ -43,7 +45,7 @@ inspiration for Markdown's syntax is the format of plain text email.
 
 Test some latex:
 $$
-    \|x^{k+1} - x^*\|^2 \leq \|x^k - x^*\|^2 (1 - \eta \mu) - \|x^k - y^k\|^2(1 - 2\eta\mu - \eta^2 L^2)
+    \left\|x^{k+1} - x^* \right\|^2 \leq \left\|x^k - x^* \right\|^2 (1 - \eta \mu) - \left\|x^k - y^k\right\|^2(1 - 2\eta\mu - \eta^2 L^2)
 $$
 
 ## Block Elements [](#){name=block}

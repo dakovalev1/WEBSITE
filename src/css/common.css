@@ -5,6 +5,7 @@ body{
 
     font-family:"Helvetica";
     font-weight:400;
+    word-wrap: break-word;
 }
 
 img{
@@ -12,18 +13,16 @@ img{
 }
 
 div.section{
-    background-color: white;
     display: block;
-    padding-top: 10px;
+    padding: 10px 0;
 }
 h1.section-title{
     font-weight: 400;
 }
 
 div.full-post-container{
-    background-color:white;
     display: block;
-    padding-top: 10px;
+    padding: 10px 0;
 }
 h1.full-post-title{
     margin-bottom: 15px;
@@ -32,16 +31,11 @@ div.full-post-date{
     color: rgb(100, 100, 100);
     margin: 15px 0;
 }
-div.full-post-content{
-    background-color: white;
-}
+/*div.full-post-content{}*/
 
 div.post-container{
-    background-color:white;
     padding: 15px;
     margin: 15px 0;
-    border-style: solid;
-    border-radius: 5px;
 }
 h1.post-title{
     margin-top: 0px;
@@ -55,15 +49,14 @@ h1.post-title a{
     color: black;
     transition: color 0.5s;
 }
+h1.post-title a:hover{
+    color: #45b;
+}
 
 
 div.paper-container{
-    background-color:white;
     padding: 15px;
     margin: 15px 0;
-    border-style: solid;
-    border-radius: 5px;
-    border-color: #45b;
 }
 h1.paper-title{
     margin-top: 0px;
@@ -72,11 +65,17 @@ h1.paper-title{
 div.paper-date{
     color: rgb(100, 100, 100);
 }
-div.paper-authors{
+/*div.paper-authors{
     color: #45b;
     text-decoration: underline;
-}
+}*/
 
+a{
+    color:#45b;
+}
+a:visited { 
+    color:#45b;
+}
 
 @media(max-width: 599px)
 {
@@ -85,31 +84,11 @@ div.paper-authors{
         font-size: 16px;
         line-height: 32px;
     }
-    a{
-        color:#45b;
-    }
-    a:visited { 
-        color:#45b;
-    }
     div.section{
         margin: 0 15px;
     }
     div.full-post-container{
         margin: 0 15px;
-    }
-    div.full-post-content{
-        padding: 15px;
-        border-style : solid;
-        border-color: #45b;
-        border-radius: 15px;
-        overflow-x: scroll;
-    }
-    
-    div.post-container{
-        border-color: #45b;
-    }
-    h1.post-title a:hover{
-        color: #45b;
     }
 }
 
@@ -120,12 +99,6 @@ div.paper-authors{
         font-size: 16px;
         line-height: 32px;
     }
-    a{
-        color:red;
-    }
-    a:visited { 
-        color:red;
-    }
     div.section{
         width:570px;
         margin-left: auto;
@@ -135,24 +108,6 @@ div.paper-authors{
         width:570px;
         margin-left: auto;
         margin-right: auto;
-    }
-    div.full-post-content{
-        padding: 15px;
-        border-style : solid;
-        border-color: red;
-        border-radius: 15px;
-        overflow-x: scroll;
-    }
-
-    div.post-container{
-        border-color: red;
-    }
-    h1.post-title a:hover{
-        color: red;
-    }
-
-    div.paper-container{
-        border-color: red;
     }
 }
 
@@ -163,12 +118,6 @@ div.paper-authors{
         font-size: 20px;
         line-height: 40px;
     }
-    a{
-        color:green;
-    }
-    a:visited { 
-        color:green;
-    }
     div.section{
         width:765px;
         margin-left: auto;
@@ -178,17 +127,6 @@ div.paper-authors{
         width:765px;
         margin-left: auto;
         margin-right: auto;
-    }
-
-    div.post-container{
-        border-color: green;
-    }
-    h1.post-title a:hover{
-        color: green;
-    }
-
-    div.paper-container{
-        border-color: green;
     }
 }
 
@@ -199,12 +137,6 @@ div.paper-authors{
         font-size: 20px;
         line-height: 40px;
     }
-    a{
-        color:darkorange;
-    }
-    a:visited { 
-        color:darkorange;
-    }
     div.section{
         width:1115px;
         margin-left: auto;
@@ -214,17 +146,6 @@ div.paper-authors{
         width:1115px;
         margin-left: auto;
         margin-right: auto;
-    }
-
-    div.post-container{
-        border-color: darkorange;
-    }
-    h1.post-title a:hover{
-        color: darkorange;
-    }
-
-    div.paper-container{
-        border-color: darkorange;
     }
 }
 
