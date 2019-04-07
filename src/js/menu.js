@@ -38,11 +38,20 @@ $(document).ready(function(){
         }
     });
 
+    
+
 
     var rtime;
     var timeout = false;
     var delta = 200;
-    $(window).resize(function() {
+
+    var w = $(window).width();
+    $(window).resize(function(){
+        if ($(window).width()==w){
+            return; 
+        }
+        w = $(window).width();
+
         rtime = new Date();
         if (timeout === false) {
             timeout = true;
