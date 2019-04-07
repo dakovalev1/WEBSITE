@@ -69,6 +69,24 @@ div.paper-date{
 div.paper-authors p{
     margin: 0;
 }
+div.paper-links a{
+    display: inline-block;
+    text-decoration: none;
+    margin: 5px 10px 5px 0;
+
+    transition: color 0.2s, background-color 0.2s;
+
+    background-color: white;
+    color: #45b;
+
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #45b;
+}
+div.paper-links a:hover{
+    background-color:#45b;
+    color: white;
+}
 /*div.paper-authors{
     color: #45b;
     text-decoration: underline;
@@ -94,6 +112,10 @@ a:visited {
     div.full-post-container{
         margin: 0 15px;
     }
+    div.paper-links a{
+        padding: 0 3px;
+        border-width: 2px;
+    }
 }
 
 @media(max-width: 899px) and (min-width: 600px)
@@ -112,6 +134,10 @@ a:visited {
         width:570px;
         margin-left: auto;
         margin-right: auto;
+    }
+    div.paper-links a{
+        padding: 0 3px;
+        border-width: 2px;
     }
 }
 
@@ -132,6 +158,10 @@ a:visited {
         margin-left: auto;
         margin-right: auto;
     }
+    div.paper-links a{
+        padding: 0 5px;
+        border-width: 3px;
+    }
 }
 
 @media(min-width: 1200px)
@@ -150,6 +180,10 @@ a:visited {
         width:1115px;
         margin-left: auto;
         margin-right: auto;
+    }
+    div.paper-links a{
+        padding: 0 5px;
+        border-width: 3px;
     }
 }
 

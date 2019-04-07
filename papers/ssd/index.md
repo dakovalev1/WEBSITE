@@ -5,3 +5,4 @@ authors: Dmitry Kovalev
         Elnur Gasanov
         Peter Richt&aacute;rik
 date: 11 Feb 2018
+links: {"arXiv" : "https://arxiv.org/abs/1802.03703", "NeurIPS 2018" : "https://papers.nips.cc/paper/7596-stochastic-spectral-and-conjugate-descent-methods"}

@@ -7,6 +7,7 @@ import lxml.html as html
 import lxml.html.builder as builder
 import dateparser
 import sys
+import json
 
 base_url = ""
 
@@ -30,6 +31,8 @@ class Paper:
         self.title = md.Meta['title'][0]
         self.date = dateparser.parse(md.Meta['date'][0])
         self.authors = md.Meta['authors']
+        self.links = json.loads(md.Meta['links'][0])
+        
         
 
 
@@ -77,6 +80,11 @@ def make_short_papers(p_list):
         if len(paper.authors) > 1:
             authors += " and " + paper.authors[-1]
 
+        links = []
+
+        for key in paper.links:
+            links += [builder.A(key, href=paper.links[key])]
+
         tag_list.append(builder.DIV(
             builder.H1(
                 paper.title,
@@ -84,6 +92,7 @@ def make_short_papers(p_list):
             ),
             builder.DIV(html.fromstring(authors), builder.CLASS("paper-authors")),
             builder.DIV(paper.date.strftime("%d %b. %Y"), builder.CLASS("paper-date")),
+            builder.DIV(*links, builder.CLASS("paper-links")),
             builder.CLASS("paper-container")))
     return tag_list
 
