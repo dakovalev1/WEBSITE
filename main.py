@@ -108,11 +108,7 @@ def make_head():
         builder.TITLE("Dmitry Kovalev"),
         builder.META(name="viewport", content = "width=device-width, initial-scale=1"),
         builder.SCRIPT("", type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js",async="async"),
-        builder.SCRIPT("MathJax.Hub.Config({" +
-            "config: [\"MMLorHTML.js\"], "+
-            "jax: [\"input/TeX\", \"output/HTML-CSS\", \"output/NativeMML\"], "+
-            "\"HTML-CSS\": {linebreaks: { automatic: true, width: \"container\" }}, "
-            "extensions: [\"MathMenu.js\", \"MathZoom.js\"]});",
+        builder.SCRIPT(open("src/js/mathjax.js").read(),
             type="text/x-mathjax-config"),
         builder.SCRIPT("", src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"),
         #builder.SCRIPT("", src="js/jquery.waypoints.min.js"),
