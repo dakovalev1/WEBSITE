@@ -58,6 +58,7 @@ h1.post-title a:hover{
 div.paper-container{
     padding: 0;
     margin: 15px 0;
+    margin-bottom: 40px;
 }
 h1.paper-title{
     margin: 0;
