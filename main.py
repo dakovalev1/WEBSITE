@@ -71,14 +71,22 @@ def make_short_posts(p_list):
     return tag_list
 
 def make_short_papers(p_list):
+    authors_dict = json.load(open("authors.json"))
+
+    def gen_author_link(a):
+        if a in authors_dict:
+            return "<a href=\"" + authors_dict[a] + "\">" + a + "</a>"
+        else:
+            return a
+
     tag_list = []
     for paper in p_list:
         
-        authors = paper.authors[0]
+        authors = gen_author_link(paper.authors[0])
         for a in paper.authors[1:-1]:
-            authors += ", " + a
+            authors += ", " + gen_author_link(a)
         if len(paper.authors) > 1:
-            authors += " and " + paper.authors[-1]
+            authors += " and " + gen_author_link(paper.authors[-1])
 
         links = []
 
