@@ -70,7 +70,7 @@ def make_short_posts(p_list):
             builder.CLASS("post-container")))
     return tag_list
 
-def make_short_papers(p_list):
+def make_short_papers(p_list, count=None):
     authors_dict = json.load(open("authors.json"))
 
     def gen_author_link(a):
@@ -80,7 +80,7 @@ def make_short_papers(p_list):
             return a
 
     tag_list = []
-    for paper in p_list:
+    for paper in p_list[:count]:
         
         authors = gen_author_link(paper.authors[0])
         for a in paper.authors[1:-1]:
@@ -162,12 +162,14 @@ def make_menu(index = False):
 def gen_index(p_list):
 
     about = html.fromstring(open("src/html/about.html").read())
+    contact = html.fromstring(open("src/html/contact.html").read())
 
     index = builder.HTML(
         builder.HEAD(*make_head(), builder.LINK(rel="stylesheet",href=base_url + "css/about.css")),
         builder.BODY(
             make_menu(index=True),
-            about
+            about,
+            contact
         )
     )
 
@@ -253,7 +255,7 @@ shutil.copytree("res", os.path.join(base_path, "res"))
 post_list = load_posts()
 paper_list = load_papers()
 
-gen_index(post_list)
+gen_index(paper_list)
 gen_posts(post_list)
 gen_papers(paper_list)
 
