@@ -62,7 +62,7 @@ def make_short_posts(p_list):
     for post in p_list:
         tag_list.append(builder.DIV(
             builder.H1(
-                builder.A(post.title, href="posts/" + post.id + ".html"),
+                builder.A(post.title, href=base_url + "posts/" + post.id),
                 builder.CLASS("post-title")
             ),
             html.fromstring(post.summary),
@@ -193,7 +193,7 @@ def gen_posts(p_list):
             builder.HEAD(*make_head()),
             builder.BODY(make_menu(), html_content)
         )
-        print(html.etree.tostring(page, pretty_print=True, method='html').decode("utf-8"), file=open(os.path.join(base_path, "posts/" + post.id + ".html"), "w"))
+        print(html.etree.tostring(page, pretty_print=True, method='html').decode("utf-8"), file=open(os.path.join(base_path, "posts", post.id, "index.html"), "w"))
     
 def gen_papers(p_list):
     index = builder.HTML(
@@ -237,7 +237,7 @@ del_file("papers.html")
 if not os.path.exists(base_path):
     os.mkdir(base_path)
 
-os.mkdir(os.path.join(base_path, "posts"))
+shutil.copytree("posts", os.path.join(base_path, "posts"))
 shutil.copytree("src/css", os.path.join(base_path, "css"))
 shutil.copytree("src/js", os.path.join(base_path, "js"))
 shutil.copytree("res", os.path.join(base_path, "res"))

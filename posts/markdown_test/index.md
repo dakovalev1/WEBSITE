@@ -5,11 +5,10 @@ date: 05 April 2019 19:53
 
 # Markdown: Syntax
 
-111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
-
 *   [Overview](#overview){class=hashtag}
     *   [Philosophy](#philosophy){class=hashtag}
 *   [Latex](#latex){class=hashtag}
+*   [Images](#image){class=hashtag}
 *   [Block Elements](#block){class=hashtag}
     *   [Paragraphs and Line Breaks](#p){class=hashtag}
     *   [Headers](#header){class=hashtag}
@@ -41,12 +40,20 @@ filters -- including [Setext](http://docutils.sourceforge.net/mirror/setext.html
 [Grutatext](http://www.triptico.com/software/grutatxt.html), and [EtText](http://ettext.taint.org/doc/) -- the single biggest source of
 inspiration for Markdown's syntax is the format of plain text email.
 
-## Latex [](){name=latex}
+## Latex [](#){name=latex}
 
 Test some latex:
 $$
     \left\|x^{k+1} - x^* \right\|^2 \leq \left\|x^k - x^* \right\|^2 (1 - \eta \mu) - \left\|x^k - y^k\right\|^2(1 - 2\eta\mu - \eta^2 L^2)
 $$
+
+## Images [](#){name=image}
+
+This is a test image:
+![avatar](avatar.jpg){:width="30%"}
+
+Images have max-width css property, so no overflows are expected:
+![avatar](avatar.jpg){:height="50px" width="1000px"}
 
 ## Block Elements [](#){name=block}
 
