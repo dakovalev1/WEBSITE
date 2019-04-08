@@ -11,7 +11,7 @@ import json
 
 base_url = ""
 
-base_path = "dakovalev1.github.io"
+base_path = "/Users/kovaled/Documents/dakovalev1.github.io"
 
 
 class Post:
@@ -151,6 +151,7 @@ def make_menu(index = False):
         builder.LI(builder.A(builder.B("Posts"), href=base_url+"posts.html"), builder.CLASS("menu-item")),
         builder.LI(builder.A(builder.B("Papers"), href=base_url+"papers.html"), builder.CLASS("menu-item")),
         builder.LI(contact, builder.CLASS("menu-item")),
+        builder.LI(builder.A(builder.B("CV"), href=base_url+"CV/cv.pdf"), builder.CLASS("menu-item")),
         builder.CLASS("menu")
     )
     return builder.DIV(menu, builder.CLASS("menu-container"))

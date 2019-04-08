@@ -7,7 +7,7 @@ $(document).ready(function(){
         menu_toggle = !menu_toggle;
         $("ul.menu").stop(true);
         if (menu_toggle){
-            $("ul.menu").animate({height: "200px"}, 200);
+            $("ul.menu").animate({height: "250px"}, 200);
         } else {
             $("ul.menu").animate({height: "50px"}, 200);
         }
@@ -31,7 +31,7 @@ $(document).ready(function(){
         } else {
             big_screen = false;
             if (menu_toggle){
-                $("ul.menu").css("height", "200px");
+                $("ul.menu").css("height", "250px");
             } else {
                 $("ul.menu").css("height", "50px");
             }
