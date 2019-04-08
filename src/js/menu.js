@@ -7,9 +7,9 @@ $(document).ready(function(){
         menu_toggle = !menu_toggle;
         $("ul.menu").stop(true);
         if (menu_toggle){
-            $("ul.menu").animate({height: "200px"});
+            $("ul.menu").animate({height: "200px"}, 200);
         } else {
-            $("ul.menu").animate({height: "50px"});
+            $("ul.menu").animate({height: "50px"}, 200);
         }
         return false;
     });
@@ -18,7 +18,7 @@ $(document).ready(function(){
         if (big_screen == false){
             menu_toggle = false;
             $("ul.menu").stop(true);
-            $("ul.menu").animate({height: "50px"});
+            $("ul.menu").animate({height: "50px"}, 200);
         }
     });
 
