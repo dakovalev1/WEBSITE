@@ -1,5 +1,5 @@
 title: Talk: Stochastic Spectral and Conjugate Descent Methods
-summary: Today I gave a talk at «Automatic control and Optimization Theory» seminar at the Institute for Control Problems, Moscow. Slides are available [here](ssd.pdf).
+summary: Today I gave a talk at «Automatic control and Optimization Theory» seminar at the Institute for Control Problems, Moscow.
 date: 26 mar 2019 17:00
 
 Today I gave a talk at the "Automatic control and Optimization Theory" seminar at the [Institute for Control Problems](https://www.ipu.ru/en), Moscow.
