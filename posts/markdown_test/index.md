@@ -7,6 +7,7 @@ date: 05 April 2019 19:53
 
 *   [Overview](#overview){class=hashtag}
     *   [Philosophy](#philosophy){class=hashtag}
+*   [Tables](#table){class=hashtag}
 *   [Latex](#latex){class=hashtag}
 *   [Images](#image){class=hashtag}
 *   [Block Elements](#block){class=hashtag}
@@ -40,12 +41,34 @@ filters -- including [Setext](http://docutils.sourceforge.net/mirror/setext.html
 [Grutatext](http://www.triptico.com/software/grutatxt.html), and [EtText](http://ettext.taint.org/doc/) -- the single biggest source of
 inspiration for Markdown's syntax is the format of plain text email.
 
+## Tables [](){name=table}
+
+Test tables:
+
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
+
+
+|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|
+|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+|1|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|11111111111111|
+
+
+
 ## Latex [](#){name=latex}
 
-Test some latex:
+Here we test latex. 
+Inline formula: \(e^x + \sqrt{\frac{f(x) - f(y)}{x-y}}\).
+
+Separate formula:
 $$
     \left\|x^{k+1} - x^* \right\|^2 \leq \left\|x^k - x^* \right\|^2 (1 - \eta \mu) - \left\|x^k - y^k\right\|^2(1 - 2\eta\mu - \eta^2 L^2)
 $$
+
+\(e^x + \sqrt{\frac{f(x) - f(y)}{x-y}}\)
 
 ## Images [](#){name=image}
 

@@ -201,7 +201,7 @@ def gen_posts(p_list):
         )
 
         page = builder.HTML(
-            builder.HEAD(*make_head()),
+            builder.HEAD(*make_head(), builder.SCRIPT("", src=base_url + "js/table.js"),),
             builder.BODY(make_menu(), html_content)
         )
         print(html.etree.tostring(page, pretty_print=True, method='html').decode("utf-8"), file=open(os.path.join(base_path, "posts", post.id, "index.html"), "w"))

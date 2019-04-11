@@ -34,7 +34,15 @@ div.full-post-date{
     color: rgb(100, 100, 100);
     margin: 15px 0;
 }
-/*div.full-post-content{}*/
+div.full-post-content div.table-container{
+    overflow-x: auto;
+}
+div.full-post-content table {
+    border-collapse: collapse;
+}
+div.full-post-content table, th, td{
+    border: 1px solid black;
+}
 
 div.post-container{
     padding: 15px;
